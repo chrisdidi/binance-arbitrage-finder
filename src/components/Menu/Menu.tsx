@@ -45,8 +45,9 @@ const Menu: React.FC<IProps> = ({ history }) => {
         </p>
       </h1>
       <div className=" flex">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <Item
+            key={`${index}_${item.label}`}
             label={item.label}
             onClick={onClick.bind(this, item.path, item.type)}
           />

@@ -1,11 +1,7 @@
-export type PairProps = {
-  symbol?: string;
-};
-
 export type ConfigProps = {
-  pair1: PairProps;
-  pair2: PairProps;
-  pair3: PairProps;
+  pair1?: SymbolProps;
+  pair2?: SymbolProps;
+  pair3?: SymbolProps;
 };
 
 export type SymbolProps = {
