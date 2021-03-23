@@ -1,7 +1,13 @@
+export type SelectorProps = {
+  label?: string;
+  value?: any;
+};
+
 export type ConfigProps = {
   pair1?: SymbolProps;
   pair2?: SymbolProps;
   pair3?: SymbolProps;
+  pair2Options?: SelectorProps[];
 };
 
 export type SymbolProps = {

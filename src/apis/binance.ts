@@ -1,9 +1,11 @@
+import { MarketInfoResult } from "./types";
+
 const endpoints = {
   base: "https://api.binance.com",
 };
 
 const Binance = () => {
-  const getExchangeInfo = async () => {
+  const getExchangeInfo = async (): Promise<MarketInfoResult> => {
     try {
       const data = await fetch(`${endpoints.base}/api/v3/exchangeInfo`, {
         method: "get",

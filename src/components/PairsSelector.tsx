@@ -2,11 +2,12 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import Binance from "../apis/binance";
 import { configStore } from "../context/configStore";
 import { SymbolProps } from "../types/general";
+import Button from "./common/Button";
 import Selector from "./common/selector";
 
 interface DataProps {
   loading: boolean;
-  symbols?: SymbolProps[] | null;
+  symbols?: SymbolProps[];
   error?: any;
 }
 
@@ -14,7 +15,6 @@ const PairsSelector: React.FC = () => {
   const { config, editPair1, editPair2 } = useContext(configStore);
   const [data, setData] = useState<DataProps>({
     loading: true,
-    symbols: null,
   });
 
   const getMarketInfo = useCallback(async () => {
@@ -25,6 +25,17 @@ const PairsSelector: React.FC = () => {
     });
   }, []);
 
+  const onEditPair1 = (pair: SymbolProps) => {
+    if (editPair1) {
+      editPair1(pair, data.symbols);
+    }
+  };
+
+  const onEditPair2 = (pair: SymbolProps) => {
+    if (editPair2) {
+      editPair2(pair, data.symbols);
+    }
+  };
   useEffect(() => {
     if (data.loading && !Boolean(data.symbols)) {
       getMarketInfo();
@@ -43,7 +54,7 @@ const PairsSelector: React.FC = () => {
             return { label: a.symbol, value: a };
           }) || []
         }
-        onSelect={editPair1?.bind(this)}
+        onSelect={onEditPair1?.bind(this)}
       />
       <Selector
         placeholder={config.pair1 ? "Select a pair" : "Select pair 1 first."}
@@ -51,12 +62,9 @@ const PairsSelector: React.FC = () => {
         label={"Pair 2"}
         hint="You must select Pair 1 first."
         disabled={!Boolean(config.pair1)}
-        list={
-          data.symbols?.map((a) => {
-            return { label: a.symbol, value: a };
-          }) || []
-        }
-        onSelect={editPair2?.bind(this)}
+        list={config.pair2Options || []}
+        onSelect={onEditPair2?.bind(this)}
+        forceValue={config.pair2?.symbol}
       />
       <Selector
         placeholder={"This is auto selected."}
@@ -64,7 +72,15 @@ const PairsSelector: React.FC = () => {
         disabled={true}
         label={"Pair 3"}
         hint="Pair 3 is auto selected. Select Pair 1 and 2 first."
+        forceValue={config.pair3?.symbol}
       />
+      <div className={"w-full flex justify-end"}>
+        <Button
+          label="Start"
+          intent="attention"
+          disabled={!(config.pair1 && config.pair2 && config.pair3)}
+        />
+      </div>
     </div>
   );
 };

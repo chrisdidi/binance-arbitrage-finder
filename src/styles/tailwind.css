@@ -12,6 +12,10 @@
 .input-hint {
   @apply text-sm text-gray-600 italic;
 }
+
+.input-text {
+  @apply text-gray-700 font-semibold;
+}
 .white-box {
   @apply w-full bg-white rounded-lg shadow-md p-3;
 }
