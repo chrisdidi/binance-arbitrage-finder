@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 import { ImSpinner8 } from "react-icons/im";
 import { SelectorProps, SymbolProps } from "../../types/general";
@@ -23,6 +23,7 @@ const Selector: React.FC<IProps> = ({
   onSelect,
   forceValue,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [showList, setShowList] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -43,6 +44,13 @@ const Selector: React.FC<IProps> = ({
     setShowList(false);
   };
 
+  const onArrowClicked = () => {
+    if (inputRef.current && !showList) {
+      inputRef.current.focus();
+    }
+    setShowList(!showList);
+  };
+
   useEffect(() => {
     setQuery(forceValue || "");
   }, [forceValue]);
@@ -54,6 +62,7 @@ const Selector: React.FC<IProps> = ({
       </div>
       <div className=" w-full bg-gray-100 flex justify-between items-center px-3 py-2 rounded-lg">
         <input
+          ref={inputRef}
           placeholder={placeholder}
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
@@ -68,7 +77,7 @@ const Selector: React.FC<IProps> = ({
         ) : (
           <div
             className=" text-gray-500 cursor-pointer hover:bg-opacity-100 bg-opacity-0 transition-all duration-300 bg-gray-200 p-1 rounded-full"
-            onClick={setShowList.bind(this, !showList)}
+            onClick={onArrowClicked}
           >
             {showList ? (
               <BsFillCaretUpFill size={16} />
