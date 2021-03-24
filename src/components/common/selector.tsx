@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
-import { ImSpinner8 } from "react-icons/im";
 import { SelectorProps, SymbolProps } from "../../types/general";
+import Spinner from "./spinner";
 
 interface IProps {
   label?: string;
@@ -71,9 +71,7 @@ const Selector: React.FC<IProps> = ({
           onBlur={onClose}
         />
         {loading ? (
-          <div className=" animate-spin text-blue-400">
-            <ImSpinner8 size={16} />
-          </div>
+          <Spinner />
         ) : (
           <div
             className=" text-gray-500 cursor-pointer hover:bg-opacity-100 bg-opacity-0 transition-all duration-300 bg-gray-200 p-1 rounded-full"

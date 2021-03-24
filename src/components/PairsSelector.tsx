@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import Binance from "../apis/binance";
 import { configStore } from "../context/configStore";
 import { SymbolProps } from "../types/general";
-import Button from "./common/Button";
+import Button from "./common/button";
 import Selector from "./common/selector";
 
 interface DataProps {
@@ -11,7 +11,11 @@ interface DataProps {
   error?: any;
 }
 
-const PairsSelector: React.FC = () => {
+interface IProps {
+  onShowProfit: any;
+  showProfit: boolean;
+}
+const PairsSelector: React.FC<IProps> = ({ onShowProfit, showProfit }) => {
   const { config, editPair1, editPair2 } = useContext(configStore);
   const [data, setData] = useState<DataProps>({
     loading: true,
@@ -43,7 +47,7 @@ const PairsSelector: React.FC = () => {
   }, [data.loading, data.symbols, getMarketInfo]);
 
   return (
-    <div className=" white-box md:max-w-md">
+    <div className=" white-box md:max-w-md mb-3 md:mb-0 md:mr-3">
       <h1 className=" title">Select 3 pairs to begin with!</h1>
       <Selector
         placeholder="Select a pair"
@@ -76,9 +80,10 @@ const PairsSelector: React.FC = () => {
       />
       <div className={"w-full flex justify-end"}>
         <Button
-          label="Start"
+          label={showProfit ? "Close" : "Start"}
           intent="attention"
           disabled={!(config.pair1 && config.pair2 && config.pair3)}
+          onClick={onShowProfit}
         />
       </div>
     </div>

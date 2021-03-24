@@ -24,7 +24,7 @@ const Button: React.FC<IProps> = ({
         intent === "danger" && "bg-red-400"
       } ${intent === "attention" && "bg-indigo-500"} ${
         intent === "cancel" && "bg-gray-400"
-      } rounded-lg shadow-md text-lg py-1 px-3 text-white hover:opacity-60 transition-opacity duration-500 ${
+      } rounded-lg shadow-md text-lg py-1 px-3 text-white hover:opacity-60 transition-opacity duration-500 focus:outline-none${
         fullWidth && "w-full"
       }`}
       onClick={disabled ? () => {} : onClick}
