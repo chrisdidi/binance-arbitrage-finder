@@ -4,5 +4,5 @@ This react app allows you to find arbitrage opportunities on Binance, and downlo
 
 ## Goals
 
-- [ ] Detect arbitrage opportunities
+- [x] Detect arbitrage opportunities
 - [ ] Allow download detected opportunities into CSV file
