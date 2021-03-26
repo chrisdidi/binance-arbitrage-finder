@@ -15,7 +15,7 @@ const NumInput: React.FC<IProps> = ({
   changeValue = 0.0001,
 }) => {
   const symbolStyle =
-    " flex-center h-8 w-8 bg-indigo-400 text-white rounded-full cursor-pointer shadow-md hover:shadow-lg hover:bg-blue-400 transition-all duration-150";
+    " flex-center h-8 w-8 bg-indigo-400 text-white rounded-full cursor-pointer shadow-md hover:shadow-lg hover:bg-blue-400 transition-all duration-300";
   return (
     <div className="flex justify-between items-center w-full py-1">
       <p className="input-label">{label}</p>

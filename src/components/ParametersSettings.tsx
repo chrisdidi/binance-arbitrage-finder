@@ -14,7 +14,7 @@ const ParametersSettings = () => {
       updateParameters({
         ...parameters,
         [pairKey]: {
-          ...parameters.pair1,
+          ...parameters[pairKey],
           [typeKey]: num,
         },
       });
@@ -30,13 +30,13 @@ const ParametersSettings = () => {
         onMarginChange={onMarginChange}
       />
       <ParametersSettingBox
-        symbol={config.pair1?.symbol}
+        symbol={config.pair2?.symbol}
         parameters={parameters.pair2}
         pairKey={"pair2"}
         onMarginChange={onMarginChange}
       />
       <ParametersSettingBox
-        symbol={config.pair1?.symbol}
+        symbol={config.pair3?.symbol}
         parameters={parameters.pair3}
         pairKey={"pair3"}
         onMarginChange={onMarginChange}
