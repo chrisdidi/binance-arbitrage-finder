@@ -26,3 +26,9 @@ export type ParametersProps = {
   buyMargin: number;
   sellMargin: number;
 };
+
+export type ParametersSetProps = {
+  pair1: ParametersProps;
+  pair2: ParametersProps;
+  pair3: ParametersProps;
+};

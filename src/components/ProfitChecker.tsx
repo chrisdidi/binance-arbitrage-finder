@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TickerResult } from "../apis/types";
 import { configStore } from "../context/configStore";
+import ParametersSettings from "./ParametersSettings";
 import ProfitContainer from "./ProfitContainer";
 import Ticker from "./Ticker";
 
@@ -55,6 +56,7 @@ const ProfitChecker = () => {
         will increase the risk of your execution as the order might not be
         traded immediately.
       </p>
+      <ParametersSettings />
     </div>
   );
 };

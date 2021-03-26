@@ -9,6 +9,9 @@
   @apply text-sm text-gray-600;
 }
 
+.flex-center {
+  @apply flex items-center justify-center;
+}
 .input-label {
   @apply font-semibold text-gray-500;
 }

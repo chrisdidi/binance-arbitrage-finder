@@ -1,9 +1,9 @@
 import React, { createContext, useCallback, useState } from "react";
-import { ConfigProps, ParametersProps, SymbolProps } from "../types/general";
+import { ConfigProps, SymbolProps, ParametersSetProps } from "../types/general";
 
 const defaultParams = {
   pair1: {
-    buyMargin: 1,
+    buyMargin: 1.0001,
     sellMargin: 1,
   },
   pair2: {
@@ -19,19 +19,14 @@ type UpdateResult = {
   ok: boolean;
   error?: any;
 };
-type ParametersStateProps = {
-  pair1: ParametersProps;
-  pair2: ParametersProps;
-  pair3: ParametersProps;
-};
 type SymbolsList = SymbolProps[];
 
 interface ContextProps {
   config: ConfigProps;
   editPair1?: (pair: SymbolProps, symbolOptions?: SymbolsList) => UpdateResult;
   editPair2?: (pair: SymbolProps, symbolOptions?: SymbolsList) => UpdateResult;
-  parameters: ParametersStateProps;
-  updateParameters?: (parameters: ParametersStateProps) => any;
+  parameters: ParametersSetProps;
+  updateParameters?: (parameters: ParametersSetProps) => any;
 }
 
 export const configStore = createContext<ContextProps>({
@@ -41,7 +36,7 @@ export const configStore = createContext<ContextProps>({
 
 const ConfigProvider: React.FC = ({ children }) => {
   const [config, setConfig] = useState<ConfigProps>({});
-  const [parameters, setParameters] = useState<ParametersStateProps>(
+  const [parameters, setParameters] = useState<ParametersSetProps>(
     defaultParams
   );
   const editPair1 = useCallback(

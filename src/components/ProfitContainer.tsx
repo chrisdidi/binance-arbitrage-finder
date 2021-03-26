@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { ProfitCalculatorProps } from "../apis/types";
+import { configStore } from "../context/configStore";
 import useProfitCalculator from "../hook/useProfitCalculator";
 
 interface IProps {
   tickers: ProfitCalculatorProps;
 }
 const ProfitContainer: React.FC<IProps> = ({ tickers }) => {
-  const { left, right } = useProfitCalculator(tickers);
+  const { parameters } = useContext(configStore);
+  const { left, right } = useProfitCalculator(tickers, parameters);
   return (
     <div className=" w-full rounded-lg bg-blue-50 p-3 mt-2">
       <div className="w-full flex justify-around items-center">

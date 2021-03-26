@@ -599,6 +599,15 @@ video {
   color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
+.flex-center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
 .input-label {
   font-weight: 600;
   --tw-text-opacity: 1;
