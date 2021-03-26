@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { TickerResult } from "../apis/types";
 import { configStore } from "../context/configStore";
+import ProfitContainer from "./ProfitContainer";
 import Ticker from "./Ticker";
 
 const ProfitChecker = () => {
@@ -19,8 +20,8 @@ const ProfitChecker = () => {
 
   return (
     <div className="white-box">
-      <h1 className="title">Profit Scanner</h1>
-      <div className=" w-full grid grid-cols-1 gap-2 lg:grid-cols-3">
+      <h1 className="title">Selected Pairs</h1>
+      <div className=" w-full grid gap-2 grid-cols-3">
         <Ticker
           pair={config.pair1}
           ticker={pair1Ticker}
@@ -37,6 +38,23 @@ const ProfitChecker = () => {
           setPairTicker={setPair3Ticker}
         />
       </div>
+      <h1 className="title mt-3">Detected Profits</h1>
+      {pair1Ticker?.ticker && pair2Ticker?.ticker && pair3Ticker?.ticker && (
+        <ProfitContainer
+          tickers={{
+            ticker1: pair1Ticker.ticker,
+            ticker2: pair2Ticker.ticker,
+            ticker3: pair3Ticker.ticker,
+          }}
+        />
+      )}
+      <h1 className="title mt-3">Parameters</h1>
+      <p className="description">
+        This is where you can adjust your parameters. <br />
+        e.g. Setting a higher selling margin will result in better profit, but
+        will increase the risk of your execution as the order might not be
+        traded immediately.
+      </p>
     </div>
   );
 };

@@ -5,6 +5,10 @@
   @apply text-lg font-bold text-gray-700;
 }
 
+.description {
+  @apply text-sm text-gray-600;
+}
+
 .input-label {
   @apply font-semibold text-gray-500;
 }

@@ -6,10 +6,10 @@ export type MarketInfoResult = {
 };
 
 export type TickerProps = {
-  bestBid: string;
-  bestBidQnt: string;
-  bestAsk: string;
-  bestAskQnt: string;
+  bestBid: number;
+  bestBidQnt: number;
+  bestAsk: number;
+  bestAskQnt: number;
 };
 
 export type TickerResult = {
@@ -17,4 +17,15 @@ export type TickerResult = {
   ticker?: TickerProps;
   error?: any;
   isClosed?: boolean;
+};
+
+export type ProfitCalculatorProps = {
+  ticker1: TickerProps;
+  ticker2: TickerProps;
+  ticker3: TickerProps;
+};
+
+export type ProfitCalculatorResult = {
+  left: number;
+  right: number;
 };

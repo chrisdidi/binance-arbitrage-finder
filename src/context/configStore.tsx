@@ -1,24 +1,49 @@
 import React, { createContext, useCallback, useState } from "react";
-import { ConfigProps, SymbolProps } from "../types/general";
+import { ConfigProps, ParametersProps, SymbolProps } from "../types/general";
 
+const defaultParams = {
+  pair1: {
+    buyMargin: 1,
+    sellMargin: 1,
+  },
+  pair2: {
+    buyMargin: 1,
+    sellMargin: 1,
+  },
+  pair3: {
+    buyMargin: 1,
+    sellMargin: 1,
+  },
+};
 type UpdateResult = {
   ok: boolean;
   error?: any;
 };
-
+type ParametersStateProps = {
+  pair1: ParametersProps;
+  pair2: ParametersProps;
+  pair3: ParametersProps;
+};
 type SymbolsList = SymbolProps[];
+
 interface ContextProps {
   config: ConfigProps;
   editPair1?: (pair: SymbolProps, symbolOptions?: SymbolsList) => UpdateResult;
   editPair2?: (pair: SymbolProps, symbolOptions?: SymbolsList) => UpdateResult;
+  parameters: ParametersStateProps;
+  updateParameters?: (parameters: ParametersStateProps) => any;
 }
+
 export const configStore = createContext<ContextProps>({
   config: {},
+  parameters: defaultParams,
 });
 
 const ConfigProvider: React.FC = ({ children }) => {
   const [config, setConfig] = useState<ConfigProps>({});
-
+  const [parameters, setParameters] = useState<ParametersStateProps>(
+    defaultParams
+  );
   const editPair1 = useCallback(
     (pair: SymbolProps, symbolsOptions?: SymbolsList) => {
       let pair2Options: SymbolProps[] = [];
@@ -73,12 +98,15 @@ const ConfigProvider: React.FC = ({ children }) => {
     },
     [config]
   );
+
   return (
     <configStore.Provider
       value={{
         config,
         editPair1,
         editPair2,
+        parameters,
+        updateParameters: setParameters,
       }}
     >
       {children}

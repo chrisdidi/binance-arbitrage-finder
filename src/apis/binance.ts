@@ -9,10 +9,10 @@ const endpoints = {
 
 const Binance = () => {
   const tickerTransform = (m: any): TickerProps => ({
-    bestBid: m.b,
-    bestBidQnt: m.B,
-    bestAsk: m.a,
-    bestAskQnt: m.A,
+    bestBid: parseFloat(m.b),
+    bestBidQnt: parseFloat(m.B),
+    bestAsk: parseFloat(m.a),
+    bestAskQnt: parseFloat(m.A),
   });
 
   const getExchangeInfo = async (): Promise<MarketInfoResult> => {

@@ -21,3 +21,8 @@ export type SymbolProps = {
   baseCommissionPrecision: number;
   quoteCommissionPrecision: number;
 };
+
+export type ParametersProps = {
+  buyMargin: number;
+  sellMargin: number;
+};

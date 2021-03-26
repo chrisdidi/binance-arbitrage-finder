@@ -31,12 +31,16 @@ const Ticker: React.FC<IProps> = ({ pair, setPairTicker, ticker }) => {
   return (
     <div className=" p-3 bg-blue-50 rounded-lg">
       <div className=" w-full flex justify-between items-center">
-        <h1 className="title">{pair.symbol}</h1>
+        <h1 className="title text-base">{pair.symbol}</h1>
         {ticker?.loading && <Spinner />}
       </div>
       <div className=" w-full pt-2">
-        <p>Best Ask Price:{ticker?.ticker?.bestAsk || "Loading..."}</p>
-        <p>Best Bid Price:{ticker?.ticker?.bestBid || "Loading..."}</p>
+        <p className=" text-sm">
+          Best Ask: {ticker?.ticker?.bestAsk.toFixed(4) || "Loading..."}
+        </p>
+        <p className=" text-sm">
+          Best Bid: {ticker?.ticker?.bestBid.toFixed(4) || "Loading..."}
+        </p>
       </div>
     </div>
   );
