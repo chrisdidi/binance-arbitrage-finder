@@ -41,7 +41,16 @@ const Menu: React.FC<IProps> = ({ history }) => {
         ARBITRAGE FINDER
         <br />
         <p className=" text-base font-normal">
-          By <span className=" underline cursor-pointer">ChrisLing.Dev</span> 💻
+          By{" "}
+          <span
+            className=" underline cursor-pointer"
+            onClick={() => {
+              window.open("https://chrisling.dev");
+            }}
+          >
+            ChrisLing.Dev
+          </span>{" "}
+          💻
         </p>
       </h1>
       <div className=" flex">
