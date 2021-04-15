@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import Binance from "../apis/binance";
 import { configStore } from "../context/configStore";
 import { SymbolProps } from "../types/general";
-import Button from "./common/button";
+import Button from "./common/Button";
 import Selector from "./common/selector";
 
 interface DataProps {
