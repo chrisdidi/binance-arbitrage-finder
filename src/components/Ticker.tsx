@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Binance from "../apis/binance";
 import { TickerResult } from "../apis/types";
 import { SymbolProps } from "../types/general";
-import Spinner from "./common/spinner";
+import Spinner from "./Common/spinner";
 
 interface IProps {
   pair: SymbolProps;
