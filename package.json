@@ -25,7 +25,7 @@
     "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
     "start": "react-scripts start",
     "start:dev": "cross-env NODE_ENV=development npm run tailwind:build & react-scripts start",
-    "build": "cross-env NODE_ENV=development npm run tailwind:build & react-scripts build",
+    "build": "cross-env NODE_ENV=production npm run tailwind:build & react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
